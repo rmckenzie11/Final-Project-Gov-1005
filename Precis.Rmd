@@ -1,0 +1,39 @@
+---
+title: "Precis"
+author: "Robert McKenzie"
+date: "October 19, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(kableExtra)
+
+
+production_data <- read_excel("production_data.xlsx", 
+    skip = 2)
+consumer_data <- read_excel("consumer_data.xlsx", 
+    skip = 3)
+province_price <- read_excel("province_price.xlsx", 
+    skip = 1)
+province_consumption <- read_excel("province_consumption.xlsx")
+
+
+```
+##Cannabis Stats Hub 2.0
+
+On October 17, 2018, Canada became the second industrial nation in the world, after Uruguay, to legalize recreational cannabis. The obvious outcome of this decision was an incredible amount of data. To consolidate and provide information on the data collected by Statistics Canada, StatCan created an online tool, called the Cannabis Stats Hub. This Hub provided visualizations and summary statistics for the immense volume of data collected by the government in preparation for the arrival of legal cannabis. Unfortunately,the Stats Hub looks like a relic from twenty years ago: tables are disorganized and opaque, and the data and models are poorly visualized and difficult to understand. My Final Project will incorporate the 12 datasets that make up the Statistics Canada Cannibus Stats Hub and create a new Hub that tells the narrative of the data in a more effective and meaningful way.
+
+Below are some of the key datasets that will form the four main tabs of the proposed new Hub. The data is very untidy, so it has to be manipulated to produce the graphics I want to produce.
+#Production data 
+```{r}
+
+kable(province_price, col.names = c("Region", "2015", "2016", "2017"))
+kable(province_consumption, col.names = c("Consumption per Province, in g", "2018"))
+kable(production_data)
+
+```
+
